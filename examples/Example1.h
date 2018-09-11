@@ -8,19 +8,20 @@ PURS_FFI_FUNC_1(Example1_runGC, _, {
 	return NULL;
 })
 
-PURS_FFI_FUNC_2(Example1_usleep, x, _, {
-	usleep(*purs_any_get_int(x));
-	return NULL;
+PURS_FFI_FUNC_2(Example1_xpure, _a, _, {
+	return _a;
 })
 
-PURS_FFI_FUNC_1(Example1_unsafeCoerce, x, {
-	return x;
+PURS_FFI_FUNC_3(Example1_xdiscard, x, f, _, {
+	const purs_any_t * _ = purs_any_app(x, NULL);
+	const purs_any_t * y = purs_any_app(purs_any_app(f, NULL), NULL);
+	return y;
 })
 
-PURS_FFI_FUNC_2(Example1_consoleLog, _s, _, {
-	const void * s = purs_any_get_string(_s)->data;
-	printf("%s\n", s);
-	return NULL;
+PURS_FFI_FUNC_3(Example1_xbind, _f, _k, _, {
+	const purs_any_t * x = purs_any_app(_f, NULL);
+	const purs_any_t * y = purs_any_app(purs_any_app(_k, x), NULL);
+	return y;
 })
 
 #endif // Example1_FFI_H
