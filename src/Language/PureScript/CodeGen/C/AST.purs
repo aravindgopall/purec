@@ -7,20 +7,17 @@ module Language.PureScript.CodeGen.C.AST
   , TypeQualifier(..)
   , ValueQualifier
   , everywhere
+  , everything
   ) where
 
 import Prelude
 
-import Data.Array (foldl)
 import Data.Array as A
-import Data.Bifunctor (bimap)
 import Data.Either (Either)
-import Data.Foldable (foldl)
 import Data.Generic.Rep as Rep
 import Data.Generic.Rep.Eq (genericEq)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
-import Data.Tuple.Nested (type (/\))
 import Foreign.Object (Object)
 
 -- | Built-in unary operators
