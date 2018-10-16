@@ -38,10 +38,10 @@ main =
   in launchAff_ do
     FS.writeTextFile UTF8 (outputDir <> "/Makefile") makefileContents
     tests <-
-      A.take 1 <$>
-      A.dropWhile (\test -> test.name /= "2609") <$>
+      -- A.take 1 <$>
+      -- A.dropWhile (\test -> test.name /= "Where") <$>
         discoverPureScriptTests testsDirectory
-    runProc "make" [ "clean", "-C", outputDir ]
+    -- runProc "make" [ "clean", "-C", outputDir ]
     -- TODO: build the dependencies once before starting the actual test suites.
     --       otherwise the first test will likely time out and give skewed
     --       results in terms of timing. probably the easiest is to write a

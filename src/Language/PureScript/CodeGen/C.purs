@@ -87,7 +87,8 @@ moduleToAST isMain mod@(C.Module { moduleName, moduleImports, moduleExports, mod
   in runReaderT <@> { module: mod } $ do
     decls <- do
       decls <- A.concat <$> traverse (bindToAst true) moduleDecls
-      eraseLambdas cModuleName =<< do
+      -- eraseLambdas cModuleName =<< do
+      pure =<< do
         hoistVarDecls <$>
           traverse optimize decls
 

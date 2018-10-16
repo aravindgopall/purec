@@ -123,7 +123,7 @@ prettyPrintAst x@(AST.Function
 
   let
     debugLambdas =
-      false
+      true
 
   name <-
     case debugLambdas, mName of
